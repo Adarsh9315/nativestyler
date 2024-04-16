@@ -1,13 +1,25 @@
 {
   "name": "nativestyler",
-  "version": "1.0.6",
-  "description": "A package for styling React Native applications with caching capabilities.",
+  "version": "1.0.7",
+  "description": "An advanced styling toolkit for React Native applications, providing dynamic, prop-based styling with efficient caching.",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "build": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "NativeStyler",
+    "React Native",
+    "Styling",
+    "Dynamic Styles",
+    "Performance",
+    "Caching",
+    "Responsive Design",
+    "Mobile Development",
+    "UI Components",
+    "Prop-Based Styling",
+    "Lightweight"
+  ],
   "author": "Adarsh Kumar",
   "license": "ISC",
   "peerDependencies": {

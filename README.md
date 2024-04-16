@@ -78,17 +78,3 @@ NativeStyler is available under the MIT License. See the LICENSE file for more d
 
 This `README.md` is designed to provide a clear and comprehensive overview of your project, its features, how to install it, usage examples, and how users can contribute or seek support.
 ```
-
-## Keywords
-
-- NativeStyler
-- React Native
-- Styling
-- Dynamic Styles
-- Performance
-- Caching
-- Responsive Design
-- Mobile Development
-- UI Components
-- Prop-Based Styling
-- Lightweight
