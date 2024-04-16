@@ -1,0 +1,35 @@
+# Source maps
+*.map
+
+# Development files
+**/tests/
+**/docs/
+
+# Configuration files
+**/.babelrc
+**/jest.config.js
+**/rollup.config.js
+**/webpack.config.js
+
+# Git and Editor directories
+.git/
+.gitignore
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Dependency directories (should not ignore because it affects package if publishing)
+# node_modules/
+
+# Optional eslint cache
+.eslintcache
+
+# Build directories
+# Typically, you DO NOT ignore the dist or build folders if these are the transpiled files you need to publish
+# dist/
+
+# Optional REPL history
+.node_repl_history

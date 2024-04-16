@@ -1,0 +1,49 @@
+{
+  "name": "nativestyler",
+  "version": "1.0.3",
+  "description": "A package for styling React Native applications with caching capabilities.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Adarsh Kumar",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-native": "^0.73.6"
+  },
+  "dependencies": {
+    "flatted": "^3.3.1",
+    "react": "^18.2.0",
+    "react-native": "^0.73.6",
+    "tiny-lru": "^11.2.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/runtime": "^7.24.4",
+    "@react-native/babel-preset": "^0.75.0-main",
+    "@react-native/eslint-config": "^0.75.0-main",
+    "@react-native/metro-config": "^0.75.0-main",
+    "@react-native/typescript-config": "^0.75.0-main",
+    "@types/jest": "^29.5.12",
+    "@types/react": "^18.2.75",
+    "@types/react-test-renderer": "^18.0.7",
+    "@types/testing-library__react": "^10.2.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adarsh9315/nativestyler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Adarsh9315/nativestyler/issues"
+  },
+  "homepage": "https://github.com/Adarsh9315/nativestyler#readme"
+  
+}
