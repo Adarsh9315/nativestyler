@@ -1,6 +1,6 @@
 {
   "name": "nativestyler",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A package for styling React Native applications with caching capabilities.",
   "main": "dist/index.js",
   "scripts": {
@@ -45,5 +45,4 @@
     "url": "https://github.com/Adarsh9315/nativestyler/issues"
   },
   "homepage": "https://github.com/Adarsh9315/nativestyler#readme"
-  
 }
