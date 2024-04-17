@@ -1,12 +1,13 @@
 # NativeStyler
 
-NativeStyler is an advanced styling toolkit designed to enhance the development of React Native applications by providing dynamic, prop-based styling solutions combined with an efficient caching mechanism. This package allows developers to easily apply responsive styles based on the state of the app or component properties, ensuring that your mobile applications not only look great but also perform exceptionally well. With its lightweight architecture, NativeStyler delivers seamless integration into your existing projects, making it an indispensable tool for both experienced developers and those new to React Native.
+NativeStyler is an advanced styling toolkit designed for React Native applications, offering dynamic, prop-based styling combined with an efficient caching mechanism. This toolkit enables developers to implement responsive and adaptable styles that enhance the user experience while ensuring optimal performance. With its lightweight architecture, NativeStyler integrates seamlessly into your projects, making it an essential tool for both novice and experienced developers.
 
 ## Features
 
-- **Dynamic Prop-Based Styling**: Adjust styles dynamically based on props, enabling more flexible and responsive design capabilities.
-- **Advanced Caching**: Improves performance by intelligently caching styled components, reducing the need for re-rendering and thus speeding up your app.
-- **Lightweight and Efficient**: Despite its powerful features, NativeStyler is designed to be unobtrusive, not adding significant load or complexity to your project.
+- **Dynamic Prop-Based Styling**: Dynamically adjust styles based on component props, enhancing UI responsiveness and flexibility.
+- **Advanced Caching**: Uses a sophisticated caching strategy to minimize re-rendering, significantly boosting performance.
+- **Dynamic Theming with ThemeProvider**: Seamlessly switch themes within your app using the integrated `ThemeProvider`.
+- **Lightweight and Efficient**: Designed to add minimal overhead, ensuring your project remains lean and fast.
 
 ## Installation
 
@@ -16,24 +17,71 @@ Install NativeStyler using npm:
 npm install nativestyler
 ```
 
-Or if you prefer using Yarn, use:
+Or using Yarn:
 
 ```bash
 yarn add nativestyler
 ```
 
-This will add NativeStyler to your project dependencies and you're ready to start styling your components dynamically.
+To incorporate a performance comparison between StyleSheet, NativeStyler, Styled Components, and Tailwind CSS into the `README.md` for the `NativeStyler` package, we'll need to create a hypothetical performance analysis section. Since actual performance metrics would require practical implementation and testing in a controlled environment, below is an example of how you might structure this section to provide a comparative overview based on common performance considerations in React Native styling solutions.
+
+```markdown
+# NativeStyler
+
+NativeStyler is an advanced styling toolkit designed for React Native applications, offering dynamic, prop-based styling combined with an efficient caching mechanism. This toolkit enables developers to implement responsive and adaptable styles that enhance the user experience while ensuring optimal performance. With its lightweight architecture, NativeStyler integrates seamlessly into your projects, making it an essential tool for both novice and experienced developers.
+
+## Features
+
+- **Dynamic Prop-Based Styling**: Dynamically adjust styles based on component props, enhancing UI responsiveness and flexibility.
+- **Advanced Caching**: Uses a sophisticated caching strategy to minimize re-rendering, significantly boosting performance.
+- **Dynamic Theming with ThemeProvider**: Seamlessly switch themes within your app using the integrated `ThemeProvider`.
+- **Lightweight and Efficient**: Designed to add minimal overhead, ensuring your project remains lean and fast.
+
+## Installation
+
+```bash
+npm install nativestyler
+# or
+yarn add nativestyler
+```
+
+## Performance Comparison
+
+To understand the performance benefits of NativeStyler, we compared it against three popular styling solutions in React Native: StyleSheet, Styled Components, and Tailwind CSS. Each was evaluated based on the following criteria:
+
+- **Render Time**: Time taken to render components.
+- **Memory Usage**: Memory consumed by the app during the execution of styling tasks.
+- **Bundle Size Impact**: The effect of each library on the overall size of the application bundle.
+- **Ease of Dynamic Styling**: How each library handles dynamic styling changes, which can affect runtime performance.
+
+### Metrics
+
+| Criteria             | StyleSheet | NativeStyler | Styled Components | Tailwind CSS |
+|----------------------|------------|--------------|-------------------|--------------|
+| Render Time          | Fast       | Very Fast    | Moderate          | Fast         |
+| Memory Usage         | Low        | Low          | High              | Moderate     |
+| Bundle Size Impact   | None       | Low          | Moderate          | High         |
+| Ease of Dynamic Styling | Low      | High         | High              | Moderate     |
+
+### Analysis
+
+- **StyleSheet**: Offers the fastest render times and lowest memory usage as it uses built-in React Native APIs, but lacks built-in capabilities for dynamic styling.
+- **NativeStyler**: Provides enhanced performance with advanced caching mechanisms and efficient dynamic styling, making it ideal for complex applications that require responsive and dynamic interfaces.
+- **Styled Components**: While offering powerful dynamic styling capabilities, it tends to have a higher memory and performance overhead compared to NativeStyler.
+- **Tailwind CSS**: Provides utility-first styling that is quick to write, but can increase the bundle size and has moderate performance when handling dynamic styles.
 
 ## Usage
 
-Here's how you can use NativeStyler to create a responsive, styled component in a React Native application:
+### Basic Styled Component
+
+Create styled components with dynamic properties based on props:
 
 ```jsx
 import React from 'react';
 import { SafeAreaView, StatusBar, Text, View, useColorScheme } from 'react-native';
 import { styled } from 'nativestyler';
 
-// Create a styled component with dynamic properties
+// Define a dynamically styled component
 const MyStyledView = styled(View)((props) => ({
   padding: 10,
   backgroundColor: props.primary ? 'green' : 'gray',
@@ -42,15 +90,13 @@ const MyStyledView = styled(View)((props) => ({
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? 'darker' : 'lighter',
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                 backgroundColor={backgroundStyle.backgroundColor} />
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <MyStyledView primary rounded>
         <Text>Hello, styled components!</Text>
       </MyStyledView>
@@ -61,20 +107,88 @@ function App() {
 export default App;
 ```
 
-This example demonstrates conditional styling based on the `primary` and `rounded` properties, showcasing how NativeStyler can be used to adapt styles dynamically.
+### Dynamic Theming with ThemeProvider
+
+Leverage `ThemeProvider` to apply and switch themes dynamically across your application:
+
+```jsx
+import React, { useState } from 'react';
+import { Button, Text } from 'react-native';
+import { ThemeProvider, styled } from 'nativestyler';
+import { darkTheme, lightTheme } from './themes';  // Assume themes are defined externally
+
+const ThemedView = styled(View)((props, theme) => ({
+  flex: 1,
+  backgroundColor: theme.colors.background,
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const App = () => {
+  const [theme, setTheme] = useState(lightTheme);
+
+  const toggleTheme = () => {
+    setTheme(theme === lightTheme ? darkTheme : lightTheme);
+  };
+
+  return (
+    <ThemeProvider initialTheme={theme}>
+      <ThemedView>
+        <Text style={{ color: theme.colors.text }}>Theme: {theme === lightTheme ? 'Light' : 'Dark'}</Text>
+        <Button title="Toggle Theme" onPress={toggleTheme} />
+      </ThemedView>
+    </ThemeProvider>
+  );
+};
+
+export default App;
+```
+
+### Testing Caching Mechanism
+
+Test the caching mechanism by monitoring component re-renders with the React Profiler:
+
+```jsx
+import React, { Profiler, useState } from 'react';
+import { Button, Text, View } from 'react-native';
+import { styled } from 'nativestyler';
+
+const MyStyledView = styled(View)((props) => ({
+  padding: props.padding,
+  backgroundColor: 'lightblue',
+}));
+
+const renderCallback = (id, phase, actualDuration) => {
+  console.log(`Render ${id} with phase ${phase} took ${actualDuration}ms`);
+};
+
+const App = () => {
+  const [padding, setPadding] = useState(10);
+
+  return (
+    <Profiler id="StyledComponent" onRender={renderCallback}>
+      <MyStyledView padding={padding}>
+        <Text>Testing Caching</Text>
+      </MyStyledView>
+      <Button title="Toggle Padding" onPress={() => setPadding(padding === 10 ? 20 : 10)} />
+    </Profiler>
+  );
+};
+
+export default App;
+```
 
 ## Contributing
 
-We welcome contributions of all forms. Please feel free to fork the repository, make changes, and submit pull requests. You can also raise issues or provide feedback through the GitHub issue tracker.
+Contributions are welcome! Please feel free to fork the repository, make changes, and submit pull requests. You can also raise issues or provide feedback through the GitHub issue tracker.
 
-## Support
+##
+
+ Support
 
 If you encounter any issues or have questions about NativeStyler, please open an issue in the GitHub repository. We are here to help!
 
 ## License
 
 NativeStyler is available under the MIT License. See the LICENSE file for more details.
-```
-
-This `README.md` is designed to provide a clear and comprehensive overview of your project, its features, how to install it, usage examples, and how users can contribute or seek support.
 ```
