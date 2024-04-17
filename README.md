@@ -23,28 +23,6 @@ Or using Yarn:
 yarn add nativestyler
 ```
 
-To incorporate a performance comparison between StyleSheet, NativeStyler, Styled Components, and Tailwind CSS into the `README.md` for the `NativeStyler` package, we'll need to create a hypothetical performance analysis section. Since actual performance metrics would require practical implementation and testing in a controlled environment, below is an example of how you might structure this section to provide a comparative overview based on common performance considerations in React Native styling solutions.
-
-```markdown
-# NativeStyler
-
-NativeStyler is an advanced styling toolkit designed for React Native applications, offering dynamic, prop-based styling combined with an efficient caching mechanism. This toolkit enables developers to implement responsive and adaptable styles that enhance the user experience while ensuring optimal performance. With its lightweight architecture, NativeStyler integrates seamlessly into your projects, making it an essential tool for both novice and experienced developers.
-
-## Features
-
-- **Dynamic Prop-Based Styling**: Dynamically adjust styles based on component props, enhancing UI responsiveness and flexibility.
-- **Advanced Caching**: Uses a sophisticated caching strategy to minimize re-rendering, significantly boosting performance.
-- **Dynamic Theming with ThemeProvider**: Seamlessly switch themes within your app using the integrated `ThemeProvider`.
-- **Lightweight and Efficient**: Designed to add minimal overhead, ensuring your project remains lean and fast.
-
-## Installation
-
-```bash
-npm install nativestyler
-# or
-yarn add nativestyler
-```
-
 ## Performance Comparison
 
 To understand the performance benefits of NativeStyler, we compared it against three popular styling solutions in React Native: StyleSheet, Styled Components, and Tailwind CSS. Each was evaluated based on the following criteria:
@@ -182,9 +160,7 @@ export default App;
 
 Contributions are welcome! Please feel free to fork the repository, make changes, and submit pull requests. You can also raise issues or provide feedback through the GitHub issue tracker.
 
-##
-
- Support
+## Support
 
 If you encounter any issues or have questions about NativeStyler, please open an issue in the GitHub repository. We are here to help!
 
