@@ -1,6 +1,6 @@
 {
   "name": "nativestyler",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "An advanced styling toolkit for React Native applications, providing dynamic, prop-based styling with efficient caching.",
   "main": "dist/index.js",
   "scripts": {
