@@ -89,9 +89,10 @@ function App() {
 export default App;
 ```
 
-Can also be used in seperate file like this:
+Can also be used in separate files like this:
 
-```ts style.ts
+```ts
+// src/components/style.ts
 import {View, Text} from 'react-native';
 import {styled} from 'nativestyler';
 
