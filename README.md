@@ -54,16 +54,20 @@ To understand the performance benefits of NativeStyler, we compared it against t
 
 Create styled components with dynamic properties based on props:
 
-```jsx
+```tsx
 import React from 'react';
 import { SafeAreaView, StatusBar, Text, View, useColorScheme } from 'react-native';
 import { styled } from 'nativestyler';
 
 // Define a dynamically styled component
-const MyStyledView = styled(View)((props) => ({
+const MyStyledView = styled<any>(View)((props) => ({
   padding: 10,
   backgroundColor: props.primary ? 'green' : 'gray',
   borderRadius: props.rounded ? 20 : 0,
+}));
+
+const StyledText = styled<any>(Text)(() => ({
+  color: 'red',
 }));
 
 function App() {
@@ -76,7 +80,7 @@ function App() {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <MyStyledView primary rounded>
-        <Text>Hello, styled components!</Text>
+        <StyledText>Hello, styled components!</StyledText>
       </MyStyledView>
     </SafeAreaView>
   );
@@ -85,17 +89,50 @@ function App() {
 export default App;
 ```
 
+Can also be used in seperate file like this:
+
+```ts style.ts
+import {View, Text} from 'react-native';
+import {styled} from 'nativestyler';
+
+export const Box = styled<any>(View)(props => ({
+  padding: props.padding || 10,
+  margin: 10,
+  backgroundColor: 'purple',
+}));
+
+// Define a styled Text
+export const StyledText = styled<any>(Text)(() => ({
+  color: 'red',
+}));
+
+```
+```tsx BoxWithNativeStyler.tsx
+// src/components/BoxWithNativeStyler.tsx
+import React from 'react';
+import {Box, StyledText} from './style';
+const BoxWithNativeStyler: React.FC<any> = () => (
+  <Box padding={50}>
+    <StyledText>NativeStyler</StyledText>
+  </Box>
+);
+
+export default BoxWithNativeStyler;
+
+
+```
+
 ### Dynamic Theming with ThemeProvider
 
 Leverage `ThemeProvider` to apply and switch themes dynamically across your application:
 
-```jsx
+```tsx
 import React, { useState } from 'react';
 import { Button, Text } from 'react-native';
 import { ThemeProvider, styled } from 'nativestyler';
 import { darkTheme, lightTheme } from './themes';  // Assume themes are defined externally
 
-const ThemedView = styled(View)((props, theme) => ({
+const ThemedView = styled<any>(View)((props, theme) => ({
   flex: 1,
   backgroundColor: theme.colors.background,
   alignItems: 'center',
@@ -126,12 +163,12 @@ export default App;
 
 Test the caching mechanism by monitoring component re-renders with the React Profiler:
 
-```jsx
+```tsx
 import React, { Profiler, useState } from 'react';
 import { Button, Text, View } from 'react-native';
 import { styled } from 'nativestyler';
 
-const MyStyledView = styled(View)((props) => ({
+const MyStyledView = styled<any>(View)((props) => ({
   padding: props.padding,
   backgroundColor: 'lightblue',
 }));
